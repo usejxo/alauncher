@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Google OAuth Example</title>
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <script>
+    function handleCredentialResponse(response) {
+      console.log("Encoded JWT ID token: " + response.credential);
+      // You can decode the JWT token and use it as needed
+      // For example, display user information
+    }
+    window.onload = function () {
+      google.accounts.id.initialize({
+        client_id: '610830150479-0h4me4n2tp87i91ar5mk3hhvaop2gij1.apps.googleusercontent.com',
+        callback: handleCredentialResponse
+      });
+      google.accounts.id.renderButton(
+        document.getElementById('buttonDiv'),
+        { theme: 'outline', size: 'large' }  // customization attributes
+      );
+      google.accounts.id.prompt(); // also display the One Tap dialog
+    }
+  </script>
+</head>
+<body>
+  <h1>Login with Google</h1>
+  <div id="buttonDiv"></div>
+</body>
+</html>
