@@ -3,17 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Google OAuth Example</title>
+  <title>Login To Jxo with google</title>
+  <link rel="stylesheet" href="styles.css">
   <script src="https://accounts.google.com/gsi/client" async defer></script>
   <script>
     function handleCredentialResponse(response) {
       console.log("Encoded JWT ID token: " + response.credential);
-      // You can decode the JWT token and use it as needed
-      // For example, display user information
+      // Redirect to Google.com after successful sign-in
+      window.location.href = "https://sites.google.com/view/jxo-com/home";
     }
     window.onload = function () {
       google.accounts.id.initialize({
-        client_id: '610830150479-0h4me4n2tp87i91ar5mk3hhvaop2gij1.apps.googleusercontent.com',
+        client_id: 'YOUR_GOOGLE_CLIENT_ID',
         callback: handleCredentialResponse
       });
       google.accounts.id.renderButton(
@@ -25,7 +26,9 @@
   </script>
 </head>
 <body>
-  <h1>Login with Google</h1>
-  <div id="buttonDiv"></div>
+  <div class="container">
+    <h1>Login with Google</h1>
+    <div id="buttonDiv"></div>
+  </div>
 </body>
 </html>
